@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Огонь Труба — котлы, парогенераторы, горелки, воздухонагреватели | дилер «Огонь Труба»</title>
+<meta name="description" content="Продажа автоматических и полуавтоматических котлов, парогенераторов, горелок и воздухонагревателей производства «Огонь Труба». Официальный дилер.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <span class="flame">🔥</span>
+      <span>МОЙ&nbsp;БРЕНД<small>отопительное оборудование</small></span>
+    </a>
+    <nav class="main">
+      <a href="#cat" data-scroll data-group="all">Каталог</a>
+      <a href="#cat" data-scroll data-group="Котлы">Котлы</a>
+      <a href="#cat" data-scroll data-group="Парогенераторы">Парогенераторы</a>
+      <a href="#cat" data-scroll data-group="Горелки">Горелки</a>
+      <a href="#cat" data-scroll data-group="Воздухонагреватели">Воздухонагреватели</a>
+    </nav>
+    <a class="btn ghost small cta-top" href="#cat" data-scroll data-group="all">Заказать</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="bg" style="background-image:url(img/cat/kotli_work.jpg)"></div>
+  <div class="veil"></div>
+  <div class="wrap">
+    <span class="badge">Официальный дилер · производство «Огонь Труба»</span>
+    <h1>Котлы, парогенераторы, горелки и воздухонагреватели — <span class="hl">под ваш объект</span></h1>
+    <p class="lead">Многотопливное и жидкотопливное оборудование для отопления цехов, СТО, складов, ангаров и производства. Работаем на отработанном масле, дизельном топливе и газе. Подбор мощности, доставка по России, гарантия производителя.</p>
+    <div class="row">
+      <a class="btn primary" href="#cat" data-scroll data-group="all">Смотреть каталог</a>
+      <a class="btn ghost" href="tel:+7 928 457-73-59">📞 +7 928 457-73-59</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">96+</div><div class="l">позиций в каталоге</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">вида топлива</div></div>
+      <div class="stat"><div class="n">12–2000</div><div class="l">кВт мощности</div></div>
+      <div class="stat"><div class="n">По РФ</div><div class="l">доставка и запуск</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<section id="cat">
+  <div class="sec-head">
+    <div>
+      <h2 id="cattitle">Каталог</h2>
+      <div class="sub" id="catsub"></div>
+    </div>
+  </div>
+  <div class="cats" id="catgrid"></div>
+</section>
+</div>
+
+<section class="wrap" id="catalog">
+  <div class="sec-head">
+    <div><h2>Товары</h2><div class="sub" id="rescount"></div></div>
+  </div>
+  <div class="filters">
+    <div class="g" id="fg-group"></div>
+    <div class="g" id="fg-fuel"></div>
+    <div class="g" id="fg-auto"></div>
+    <div class="search"><input id="q" type="search" placeholder="Поиск: котёл, АК-100, парогенератор…"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div id="empty" style="display:none;color:#93a0b0;padding:30px 0;text-align:center">Ничего не найдено. Попробуйте изменить фильтры.</div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Огонь Труба</h4>
+        <ul>
+          <li>Продажа оборудования «Огонь Труба»</li>
+          <li>Официальный дилер / представитель</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a class="phone" href="tel:+7 928 457-73-59">+7 928 457-73-59</a></li>
+          <li><a href="mailto:termoomsk@mail.ru">termoomsk@mail.ru</a></li>
+          <li>г. Москва, Россия · доставка по всей стране</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Каталог</h4>
+        <ul id="footnav"></ul>
+      </div>
+      <div>
+        <h4>О производителе</h4>
+        <ul>
+          <li>Оборудование производит <b>«Огонь Труба»</b></li>
+          <li>Гарантия производителя</li>
+          <li>Сертификация и Рос. реестр</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Официальный дилер ООО «Огонь Труба». Цены в каталоге ориентировочные — уточняйте актуальные у менеджера. Заказы и оплата оформляются от имени производителя «Огонь Труба». ☎ +7 928 457-73-59 · termoomsk@mail.ru · г. Москва, доставка по России.</div>
+  </div>
+</footer>
+
+<div class="mask" id="mask" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script src="js/products-data.js"></script>
+<script>
+/* ---- helpers ---- */
+const P = window.PRODUCTS;
+const imgByGroup = {
+  'Котлы':'img/cat/kotli.jpg',
+  'Парогенераторы':'img/cat/parogener.jpg',
+  'Горелки':'img/cat/gorelki.jpg',
+  'Воздухонагреватели':'img/cat/vozduh.jpg'
+};
+const GROUP_ORDER=['Котлы','Парогенераторы','Горелки','Воздухонагреватели'];
+const $=(s,el=document)=>el.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let state={group:'all',fuel:'all',auto:'all',q:''};
+
+function fmtPrice(v){
+  if(v==='по запросу') return {cls:'rq',html:'Цена по запросу'};
+  const s=String(v).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  return {cls:'now',html:'<span class="now">'+s+' ₽</span>'};
+}
+function tagText(p){
+  // старая цена → показываем скидку; иначе топливо
+  if(p.old) return {t:'Скидка',cls:'warn'};
+  const fuel=p.fuel==='—'? '':' · '+p.fuel;
+  return {t:(p.autotype||p.group)+fuel, cls:'accent'};
+}
+function powerLine(p){
+  const s=p.specs&&p.specs['Мощность, кВт'];
+  const r=p.specs&&p.specs['Расход топлива, л'];
+  let out=[];
+  if(s) out.push('⚡ '+s+' кВт');
+  if(r) out.push('🛢 '+r+' л');
+  return out.join(' · ');
+}
+
+/* ---- render category cards (top) ---- */
+function renderCats(){
+  const g=$('#catgrid'); let h='';
+  GROUP_ORDER.forEach(gp=>{
+    const n=P.filter(p=>p.group===gp).length;
+    h+=`<a class="catcard" href="#catalog" onclick="setGroup('${gp}');return false">
+      <img src="${imgByGroup[gp]}" alt="${esc(gp)}"><div class="ov">
+      <h3>${esc(gp)}</h3><div class="cnt">${n} моделей →</div></div></a>`;
+  });
+  // + одна карточка "Вся линейка / полуавто+универсал"
+  g.innerHTML=h+`<a class="catcard" href="#catalog" onclick="setGroup('all');return false">
+    <img src="img/cat/universal.jpg" alt="Вся линейка"><div class="ov">
+    <h3>Вся линейка</h3><div class="cnt">${P.length} позиций →</div></div></a>`;
+}
+
+/* ---- filters UI ---- */
+function buildFilters(){
+  const fg=$('#fg-group'); let hg='';
+  hg+=`<button class="chip on" data-f="group" data-v="all">Все</button>`;
+  GROUP_ORDER.forEach(g=>{hg+=`<button class="chip" data-f="group" data-v="${esc(g)}">${esc(g)}</button>`;});
+  fg.innerHTML=hg;
+
+  const fuels=[...new Set(P.map(p=>p.fuel))].filter(f=>f!=='—');
+  // порядок топлива
+  const fOrder=['Газ','Дизель','Отработанное масло'];
+  fuels.sort((a,b)=>{const i=o=>fOrder.indexOf(o);const ia=i(a),ib=i(b);return (ia<0?99:ia)-(ib<0?99:ib)});
+  const ff=$('#fg-fuel'); let hf=`<button class="chip on" data-f="fuel" data-v="all">Топливо: все</button>`;
+  fuels.forEach(f=>{hf+=`<button class="chip" data-f="fuel" data-v="${esc(f)}">${esc(f)}</button>`;});
+  ff.innerHTML=hf;
+
+  const autos=['Автоматический','Полуавтоматический'];
+  const fa=$('#fg-auto'); let ha=`<button class="chip on" data-f="auto" data-v="all">Автоматика: все</button>`;
+  autos.forEach(a=>{ha+=`<button class="chip" data-f="auto" data-v="${esc(a)}">${a}</button>`;});
+  fa.innerHTML=ha;
+
+  document.querySelectorAll('.filters .chip').forEach(b=>{
+    b.onclick=()=>{
+      const f=b.dataset.f,v=b.dataset.v;
+      document.querySelectorAll(`#fg-${f==='group'?'group':f==='fuel'?'fuel':'auto'} .chip`).forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      state[f]=v;
+      apply();
+    };
+  });
+}
+
+/* ---- apply + render grid ---- */
+function apply(){
+  const g=state.group,fl=state.fuel,au=state.auto,q=state.q.trim().toLowerCase();
+  let list=P.filter(p=>
+    (g==='all'||p.group===g) &&
+    (fl==='all'||p.fuel===fl) &&
+    (au==='all'||p.autotype===au) &&
+    (!q || (p.title+' '+(p.desc||'')).toLowerCase().includes(q))
+  );
+  renderGrid(list,g,fl,au);
+  // highlight header group
+  document.querySelectorAll('nav.main a[data-group]').forEach(a=>{
+    a.style.color = a.dataset.group===g? 'var(--accent2)':'';
+  });
+  const nm=g==='all'?{}:{_c:P.filter(p=>p.group===g)};
+  $('#rescount').textContent = `Показано ${list.length} из ${P.length}`;
+}
+function renderGrid(list,g){
+  const gr=$('#grid'); let h='';
+  if(!list.length){$('#empty').style.display='block';gr.innerHTML='';return;}
+  $('#empty').style.display='none';
+  list.forEach(p=>{
+    const pr=fmtPrice(p.price); const tg=tagText(p);
+    h+=`<div class="pcard">
+      <div class="ph"><img src="${imgByGroup[p.group]}" alt="${esc(p.title)}" loading="lazy">
+        <span class="tag">${esc(tg.t)}</span></div>
+      <div class="bd">
+        <h3>${esc(p.title)}</h3>
+        <div class="power">${powerLine(p)}</div>
+        <div class="price">${pr.html}${p.old?`<span class="old">${String(p.old).replace(/\B(?=(\d{3})+(?!\d))/g,' ')} ₽</span>`:''}</div>
+        <div class="acts">
+          <button class="btn small primary" onclick="openProd('${p.title.replace(/'/g,"\\'")}')">Заказать</button>
+          <button class="btn small ghost" onclick="openProd('${p.title.replace(/'/g,"\\'")}')">Подробнее</button>
+        </div>
+      </div></div>`;
+  });
+  gr.innerHTML=h;
+}
+
+/* ---- modal ---- */
+function openProd(title){
+  const p=P.find(x=>x.title===title); if(!p) return;
+  const pr=fmtPrice(p.price);
+  let specsRows='';
+  if(p.specs) for(const[k,v]of Object.entries(p.specs)){
+    if(k==='Доп.') continue;
+    const val=Array.isArray(v)?v.join(', '):v;
+    specsRows+=`<tr><td>${esc(k)}</td><td>${esc(String(val).replace(/\u00a0/g,' '))}</td></tr>`;
+  }
+  const fuelTag=p.fuel==='—'?'':`<span class="ftag">Топливо: ${esc(p.fuel)}</span>`;
+  const autoTag=p.autotype?`<span class="ftag">${esc(p.autotype)}</span>`:'';
+  $('#modal').innerHTML=`
+    <button class="x" onclick="closeModal()">✕</button>
+    <div class="mtop">
+      <div class="img"><img src="${imgByGroup[p.group]}" alt=""></div>
+      <div>
+        <div class="kicker">${esc(p.group)}</div>
+        <h2>${esc(p.title)}</h2>
+        <div class="mprice">${pr.html}${p.old?`<span class="old">${String(p.old).replace(/\B(?=(\d{3})+(?!\d))/g,' ')} ₽</span>`:''}</div>
+        <div class="fuelrow">${fuelTag}${autoTag}</div>
+        <div class="desc">${esc(p.desc)}</div>
+      </div>
+    </div>
+    <div class="mbody">
+      ${specsRows?`<h4>Характеристики</h4><table class="specs">${specsRows}</table>`:''}
+      <div class="orderbox">
+        <div class="ot">Оформить заказ на ${esc(p.title)}</div>
+        <div class="od">Позвоните или напишите — подберём комплектацию, рассчитаем доставку до вашего объекта. Заказ оформляется от имени производителя «Огонь Труба».</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="tel:+7 928 457-73-59">📞 Позвонить</a>
+          <a class="btn ghost" href="mailto:termoomsk@mail.ru?subject=Заказ: ${encodeURIComponent(p.title)}">✉ Написать</a>
+        </div>
+      </div>
+    </div>`;
+  $('#mask').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closeModal(){$('#mask').classList.remove('open');document.body.style.overflow='';}
+function setGroup(g){state.group=g;apply();location.hash='catalog';}
+
+/* ---- footer nav ---- */
+function footNav(){
+  const el=$('#footnav'); let h='';
+  GROUP_ORDER.forEach(g=>{h+=`<li><a href="#catalog" onclick="setGroup('${g}');return false">${esc(g)}</a></li>`;});
+  el.innerHTML=h;
+}
+
+/* ---- init ---- */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderCats(); buildFilters(); footNav(); apply();
+  $('#q').addEventListener('input',e=>{state.q=e.target.value;apply();});
+  document.querySelectorAll('nav.main a[data-group]').forEach(a=>{
+    a.addEventListener('click',e=>{setGroup(a.dataset.group);});
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+});
+</script>
+</body>
+</html>
