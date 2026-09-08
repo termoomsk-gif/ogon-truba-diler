@@ -113,6 +113,7 @@
 </div>
 
 <script src="js/products-data.js"></script>
+<script src="js/products-img.js"></script>
 <script>
 /* ---- helpers ---- */
 const P = window.PRODUCTS;
@@ -122,6 +123,8 @@ const imgByGroup = {
   'Горелки':'img/cat/gorelki.jpg',
   'Воздухонагреватели':'img/cat/vozduh.jpg'
 };
+const imgByUrl = window.IMG_BY_URL || {};
+const prodImg = p => (imgByUrl[p && p.url]) || imgByGroup[p && p.group] || '';
 const GROUP_ORDER=['Котлы','Парогенераторы','Горелки','Воздухонагреватели'];
 const $=(s,el=document)=>el.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -218,7 +221,7 @@ function renderGrid(list,g){
   list.forEach(p=>{
     const pr=fmtPrice(p.price); const tg=tagText(p);
     h+=`<div class="pcard">
-      <div class="ph"><img src="${imgByGroup[p.group]}" alt="${esc(p.title)}" loading="lazy">
+      <div class="ph"><img src="${prodImg(p)}" alt="${esc(p.title)}" loading="lazy">
         <span class="tag">${esc(tg.t)}</span></div>
       <div class="bd">
         <h3>${esc(p.title)}</h3>
@@ -248,7 +251,7 @@ function openProd(title){
   $('#modal').innerHTML=`
     <button class="x" onclick="closeModal()">✕</button>
     <div class="mtop">
-      <div class="img"><img src="${imgByGroup[p.group]}" alt=""></div>
+      <div class="img"><img src="${prodImg(p)}" alt=""></div>
       <div>
         <div class="kicker">${esc(p.group)}</div>
         <h2>${esc(p.title)}</h2>
