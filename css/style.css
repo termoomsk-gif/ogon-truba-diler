@@ -30,6 +30,19 @@ nav.main a:hover{color:var(--ink);background:var(--card)}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn.small{padding:8px 13px;font-size:13px}
 
+/* Кнопки мессенджеров: Telegram / WhatsApp / VK */
+.msgr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.msgr .lbl{font-size:13.5px;color:var(--muted);margin-right:2px}
+.msgr a{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 17px;
+  font:inherit;font-weight:700;font-size:14px;color:#fff;text-decoration:none;transition:.15s}
+.msgr a:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.msgr a.tg{background:#2aabee}
+.msgr a.wa{background:#25d366}
+.msgr a.vk{background:#0077ff}
+.msgr a.tg.main{background:linear-gradient(135deg,#2aabee,#1b83c4);box-shadow:0 6px 18px rgba(42,171,238,.3)}
+.msgr.centered{justify-content:center;margin-top:16px}
+.msgr.light .lbl{color:#5a6673}
+
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22;filter:grayscale(.2)}
