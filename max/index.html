@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>АЛЬФА КОТЁЛ — каталог оборудования</title>
+<meta name="description" content="Котлы на отработке, газовые котлы, парогенераторы, горелки и воздухонагреватели завода «Огонь Труба». Официальный дилер. Цены, характеристики, заявка менеджеру.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="шапка">
+  <div class="шапка__верх">
+    <div class="бренд">
+      <span class="бренд__знак">А</span>
+      <span class="бренд__текст">
+        <b>АЛЬФА КОТЁЛ</b>
+        <i>официальный дилер завода «Огонь Труба»</i>
+      </span>
+    </div>
+    <button class="иконка-кнопка" id="к-контактам" type="button" aria-label="Контакты">☎</button>
+  </div>
+
+  <p class="привет" id="привет" hidden></p>
+
+  <label class="поиск">
+    <span class="поиск__знак">🔍</span>
+    <input id="поиск" type="search" placeholder="Поиск: котёл, горелка, 100 кВт…" autocomplete="off">
+    <button class="поиск__сброс" id="поиск-сброс" type="button" hidden aria-label="Очистить">✕</button>
+  </label>
+
+  <nav class="группы" id="группы" aria-label="Категории"></nav>
+</header>
+
+<main class="лента">
+  <p class="счётчик" id="счётчик"></p>
+  <div class="сетка" id="сетка"></div>
+  <p class="пусто" id="пусто" hidden>
+    Ничего не нашлось. Напишите менеджеру — подберём под ваш объект.
+  </p>
+</main>
+
+<footer class="подвал">
+  <p class="подвал__строка"><b>Телефон: <a href="tel:+79284577359" id="телефон-ссылка">+7 928 457-73-59</a></b> — направление котлов</p>
+  <p class="подвал__строка">Почта: <a href="mailto:termoomsk@mail.ru">termoomsk@mail.ru</a></p>
+  <p class="подвал__строка">Витрина: <a href="https://termoomsk-gif.github.io/ogon-truba-diler/" data-внешняя>termoomsk-gif.github.io/ogon-truba-diler</a></p>
+  <p class="подвал__строка">Канал в MAX: <a href="https://max.ru/se14597297_biz" data-max>max.ru/se14597297_biz</a></p>
+  <p class="подвал__мелко">Отгрузка со склада в Омске, доставка по России. Предоплата 30 %, срок 3 рабочих дня.
+  Гарантия по паспорту: теплообменник 12 мес, горелка 8 мес, электрика 6 мес.
+  Цена «по запросу» считается под объект.</p>
+</footer>
+
+<!-- ── Карточка товара ────────────────────────────────────────────────── -->
+<section class="экран" id="экран-товар" hidden>
+  <div class="экран__шапка">
+    <button class="иконка-кнопка" id="назад-товар" type="button" aria-label="Назад">←</button>
+    <span class="экран__титул" id="товар-группа"></span>
+  </div>
+  <div class="экран__тело">
+    <div class="крупное-фото"><img id="товар-фото" alt=""></div>
+    <h1 class="товар__имя" id="товар-имя"></h1>
+    <p class="товар__цена" id="товар-цена"></p>
+    <dl class="таблица" id="товар-характеристики"></dl>
+    <p class="товар__описание" id="товар-описание"></p>
+    <div class="товар__кнопки">
+      <button class="кнопка кнопка--осн" id="товар-заявка" type="button">Оставить заявку</button>
+      <button class="кнопка кнопка--тихая" id="товар-похожие" type="button">Похожие позиции</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── Заявка ─────────────────────────────────────────────────────────── -->
+<section class="экран" id="экран-заявка" hidden>
+  <div class="экран__шапка">
+    <button class="иконка-кнопка" id="назад-заявка" type="button" aria-label="Назад">←</button>
+    <span class="экран__титул">Заявка менеджеру</span>
+  </div>
+  <div class="экран__тело">
+    <div class="карточка-итог" id="итог-товар"></div>
+    <form id="форма" novalidate>
+      <label class="поле">
+        <span>Имя</span>
+        <input name="имя" id="поле-имя" type="text" placeholder="Как к вам обращаться" autocomplete="name">
+      </label>
+      <label class="поле">
+        <span>Телефон <b class="обяз">*</b></span>
+        <input name="телефон" id="поле-телефон" type="tel" inputmode="tel" placeholder="+7 ___ ___-__-__" autocomplete="tel" required>
+      </label>
+      <button class="кнопка кнопка--мяхкая" id="кнопка-номер" type="button" hidden>📱 Отправить мой номер</button>
+      <label class="поле">
+        <span>Город / объект</span>
+        <input name="город" id="поле-город" type="text" placeholder="Например: Омск, цех 300 м²">
+      </label>
+      <label class="поле">
+        <span>Комментарий</span>
+        <textarea name="комментарий" id="поле-комментарий" rows="3" placeholder="Что нужно учесть: дымоход, автоматика, срок отгрузки…"></textarea>
+      </label>
+      <p class="ошибка" id="ошибка" hidden></p>
+      <button class="кнопка кнопка--осн" type="submit" id="кнопка-отправить">Отправить менеджеру</button>
+      <p class="мелко">Нажимая «Отправить», вы соглашаетесь на обработку контактов для расчёта заявки.
+      Отвечаем в рабочее время Пн–Пт 10:00–20:00 МСК.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ── Готово ─────────────────────────────────────────────────────────── -->
+<section class="экран экран--центр" id="экран-готово" hidden>
+  <div class="экран__тело">
+    <div class="галочка">✓</div>
+    <h2>Заявка передана</h2>
+    <p id="готово-текст">Менеджер свяжется с вами в рабочее время, подтвердит наличие и стоимость, уточнит дымоход и автоматику.</p>
+    <p class="мелко" id="готово-копия" hidden></p>
+    <button class="кнопка кнопка--осн" id="готово-каталог" type="button">Вернуться в каталог</button>
+    <a class="кнопка кнопка--тихая" id="готово-канал" href="https://max.ru/se14597297_biz" data-max>Канал «АЛЬФА КОТЁЛ» в MAX</a>
+  </div>
+</section>
+
+<div class="затемнение" id="затемнение" hidden></div>
+
+<script src="https://st.max.ru/js/max-web-app.js" onerror="window.__нет_моста=true"></script>
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

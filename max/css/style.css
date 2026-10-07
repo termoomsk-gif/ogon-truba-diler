@@ -1,0 +1,214 @@
+/* АЛЬФА КОТЁЛ — мини-приложение MAX.
+   Тёмная индустриальная тема, оранжевый акцент. Без внешних CDN.
+   Мобильный-first: приложение живёт в мессенджере, на телефоне. */
+
+:root{
+  --фон:#101317;
+  --фон-2:#171b21;
+  --карточка:#1c2128;
+  --карточка-2:#232a33;
+  --линия:#2b333d;
+  --текст:#eef2f6;
+  --тихий:#9aa6b2;
+  --акцент:#ff7a18;
+  --акцент-2:#ffa14a;
+  --огонь:linear-gradient(135deg,#ff7a18,#ff4d00);
+  --радиус:16px;
+  --тень:0 10px 30px rgba(0,0,0,.45);
+  --сейф-сверху:0px;
+  --сейф-снизу:0px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--фон);
+  color:var(--текст);
+  font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.замок{overflow:hidden}
+a{color:var(--акцент-2);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+
+/* ── Шапка ─────────────────────────────────────────────────────────── */
+.шапка{
+  position:sticky;top:0;z-index:20;
+  background:rgba(16,19,23,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--линия);
+  padding:calc(10px + var(--сейф-сверху)) 12px 8px;
+}
+.шапка__верх{display:flex;align-items:center;gap:10px}
+.бренд{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.бренд__знак{
+  width:36px;height:36px;flex:0 0 36px;border-radius:11px;
+  background:var(--огонь);color:#fff;font-weight:800;font-size:19px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(255,109,0,.35);
+}
+.бренд__текст{display:flex;flex-direction:column;min-width:0}
+.бренд__текст b{font-size:15px;letter-spacing:.4px}
+.бренд__текст i{font-size:11px;color:var(--тихий);font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.иконка-кнопка{
+  width:38px;height:38px;flex:0 0 38px;border-radius:11px;
+  background:var(--карточка);border:1px solid var(--линия);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;cursor:pointer;
+}
+.иконка-кнопка:active{transform:scale(.95)}
+
+.привет{
+  margin:8px 0 0;padding:8px 12px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(255,122,24,.16),rgba(255,77,0,.08));
+  border:1px solid rgba(255,122,24,.25);
+  font-size:13.5px;color:#ffd9bd;
+}
+
+.поиск{
+  display:flex;align-items:center;gap:8px;margin-top:10px;
+  background:var(--карточка);border:1px solid var(--линия);border-radius:12px;
+  padding:0 12px;height:42px;
+}
+.поиск__знак{font-size:14px;opacity:.7}
+.поиск input{
+  flex:1;min-width:0;background:none;border:0;outline:none;height:100%;
+  font-size:15px;
+}
+.поиск input::-webkit-search-cancel-button{display:none}
+.поиск__сброс{background:none;border:0;color:var(--тихий);cursor:pointer;font-size:15px;padding:4px}
+
+.группы{
+  display:flex;gap:8px;overflow-x:auto;margin-top:10px;padding-bottom:4px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.группы::-webkit-scrollbar{display:none}
+.группа{
+  flex:0 0 auto;white-space:nowrap;cursor:pointer;
+  background:var(--карточка);border:1px solid var(--линия);color:var(--текст);
+  border-radius:999px;padding:8px 14px;font-size:13.5px;
+}
+.группа.выбрана{background:var(--огонь);border-color:transparent;color:#fff;font-weight:600}
+
+/* ── Лента ─────────────────────────────────────────────────────────── */
+.лента{padding:14px 12px 28px}
+.счётчик{margin:0 0 10px;font-size:12.5px;color:var(--тихий)}
+.сетка{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:620px){.сетка{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media (min-width:900px){.сетка{grid-template-columns:repeat(4,1fr)}}
+
+.товар{
+  background:var(--карточка);border:1px solid var(--линия);border-radius:var(--радиус);
+  overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+  transition:transform .12s ease,border-color .12s ease;
+}
+.товар:active{transform:scale(.985)}
+.товар:hover{border-color:#3a4552}
+.товар__фото{position:relative;aspect-ratio:1/1;background:#0c0f12;overflow:hidden}
+.товар__фото img{width:100%;height:100%;object-fit:cover}
+.товар__метка{
+  position:absolute;left:8px;top:8px;
+  background:rgba(0,0,0,.66);border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;padding:3px 9px;font-size:11.5px;color:#ffd9bd;
+}
+.товар__тело{padding:9px 10px 11px;display:flex;flex-direction:column;gap:4px;flex:1}
+.товар__имя{
+  font-size:13px;font-weight:600;line-height:1.3;margin:0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.товар__цена{margin:auto 0 0;font-size:15px;font-weight:700;color:var(--акцент-2)}
+.товар__цена--запрос{color:var(--тихий);font-weight:600;font-size:13px}
+
+.пусто{color:var(--тихий);text-align:center;padding:30px 10px}
+
+/* ── Подвал ────────────────────────────────────────────────────────── */
+.подвал{
+  border-top:1px solid var(--линия);padding:18px 14px calc(24px + var(--сейф-снизу));
+  background:var(--фон-2);font-size:13.5px;
+}
+.подвал__строка{margin:0 0 7px}
+.подвал__мелко{margin:12px 0 0;color:var(--тихий);font-size:11.5px;line-height:1.5}
+
+/* ── Экраны (карточка, заявка, готово) ─────────────────────────────── */
+.экран{
+  position:fixed;inset:0;z-index:40;background:var(--фон);
+  display:flex;flex-direction:column;
+  animation:въезд .18s ease;
+}
+@keyframes въезд{from{transform:translateY(12px);opacity:.4}to{transform:none;opacity:1}}
+.экран__шапка{
+  display:flex;align-items:center;gap:10px;
+  padding:calc(10px + var(--сейф-сверху)) 12px 10px;
+  border-bottom:1px solid var(--линия);background:rgba(16,19,23,.95);
+  position:sticky;top:0;z-index:2;
+}
+.экран__титул{font-size:14px;color:var(--тихий);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.экран__тело{flex:1;overflow-y:auto;padding:14px 14px calc(28px + var(--сейф-снизу));-webkit-overflow-scrolling:touch}
+.экран--центр .экран__тело{display:flex;flex-direction:column;justify-content:center;text-align:center;gap:6px}
+
+.крупное-фото{border-radius:var(--радиус);overflow:hidden;background:#0c0f12;border:1px solid var(--линия)}
+.крупное-фото img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.товар__имя-h{font-size:15px}
+h1.товар__имя{font-size:20px;line-height:1.25;margin:14px 0 8px;font-weight:700;-webkit-line-clamp:none}
+.товар__цена{font-size:24px;font-weight:800;color:var(--акцент-2);margin:0 0 14px}
+.товар__цена--запрос{font-size:17px;color:var(--тихий)}
+
+.таблица{
+  display:grid;grid-template-columns:1fr auto;gap:0;margin:0 0 16px;
+  border:1px solid var(--линия);border-radius:var(--радиус);overflow:hidden;background:var(--карточка);
+}
+.таблица:empty{display:none}
+.таблица dt,.таблица dd{
+  margin:0;padding:9px 12px;font-size:13.5px;border-bottom:1px solid var(--линия);
+}
+.таблица dt{color:var(--тихий)}
+.таблица dd{text-align:right;font-weight:600}
+.таблица dt:nth-last-of-type(1),.таблица dd:nth-last-of-type(1){border-bottom:0}
+
+.товар__описание{font-size:14px;color:#c8d1da;line-height:1.55;margin:0 0 18px}
+.товар__кнопки{display:flex;flex-direction:column;gap:9px}
+
+.кнопка{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:13px;border:1px solid transparent;cursor:pointer;
+  padding:14px 16px;font-size:15px;font-weight:600;text-align:center;
+  transition:transform .12s ease,filter .12s ease;
+}
+.кнопка:active{transform:scale(.98)}
+.кнопка--осн{background:var(--огонь);color:#fff;box-shadow:0 8px 22px rgba(255,90,0,.28)}
+.кнопка--тихая{background:var(--карточка);border-color:var(--линия);color:var(--текст)}
+.кнопка--мяхкая{background:var(--карточка-2);border-color:var(--линия);color:#ffd9bd;font-size:14px;padding:11px 14px}
+.кнопка[disabled]{opacity:.6;filter:grayscale(.4)}
+
+.карточка-итог{
+  background:var(--карточка);border:1px solid var(--линия);border-radius:var(--радиус);
+  padding:12px 14px;font-size:14px;margin-bottom:16px;
+}
+.карточка-итог b{display:block;font-size:15px;margin-bottom:4px}
+.карточка-итог span{color:var(--акцент-2);font-weight:700}
+
+.поле{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.поле span{font-size:13px;color:var(--тихий)}
+.обяз{color:var(--акцент)}
+.поле input,.поле textarea{
+  background:var(--карточка);border:1px solid var(--линия);border-radius:12px;
+  padding:12px 13px;font-size:15px;outline:none;resize:vertical;
+}
+.поле input:focus,.поле textarea:focus{border-color:var(--акцент)}
+.ошибка{color:#ff8a8a;font-size:13.5px;margin:0 0 10px}
+.мелко{color:var(--тихий);font-size:11.5px;line-height:1.5;margin:10px 0 0}
+
+.галочка{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 8px;
+  background:var(--огонь);color:#fff;font-size:32px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px rgba(255,90,0,.35);
+}
+.экран--центр h2{margin:6px 0;font-size:22px}
+.экран--центр p{color:var(--тихий);font-size:14px;margin:0 0 6px}
+.экран--центр .кнопка{margin-top:12px}
+
+.затемнение{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:30}
