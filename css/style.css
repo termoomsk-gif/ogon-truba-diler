@@ -39,6 +39,7 @@ nav.main a:hover{color:var(--ink);background:var(--card)}
 .msgr a.tg{background:#2aabee}
 .msgr a.wa{background:#25d366}
 .msgr a.vk{background:#0077ff}
+.msgr a.max{background:linear-gradient(135deg,#6d4dff,#8f3ffc)}
 .msgr a.tg.main{background:linear-gradient(135deg,#2aabee,#1b83c4);box-shadow:0 6px 18px rgba(42,171,238,.3)}
 .msgr.centered{justify-content:center;margin-top:16px}
 .msgr.light .lbl{color:#5a6673}
