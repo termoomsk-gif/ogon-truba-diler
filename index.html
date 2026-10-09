@@ -98,14 +98,17 @@
 <script src="https://vk.ru/js/api/openapi.js?169" type="text/javascript"></script>
 <style>
   /* запасная кнопка: показывается, если виджет ВК не отрисовался
-     (Open API не работает в Firefox и Safari, а также при блокировке скриптов) */
+     (по документации Open API не работает в Firefox и Safari; проверено 09.10.2026 —
+     в нашем Firefox виджет всё-таки отрисовался, поэтому кнопку держим скрытой) */
   #vk_fallback{
     position:fixed; right:18px; bottom:18px; z-index:9000;
-    display:inline-flex; align-items:center; gap:8px;
     padding:12px 18px; border-radius:999px;
     background:#0077FF; color:#fff; font:500 15px/1 inherit;
     text-decoration:none; box-shadow:0 6px 22px rgba(0,0,0,.28);
   }
+  /* важно: без этого правила наш display перебивает атрибут hidden и кнопка
+     висит поверх виджета ВК (проверено живьём 09.10.2026) */
+  #vk_fallback[hidden]{display:none}
   #vk_fallback:hover{background:#0066dd}
   @media (max-width:600px){#vk_fallback{right:12px;bottom:12px;padding:11px 16px;font-size:14px}}
 </style>
