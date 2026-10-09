@@ -592,12 +592,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 <a id="vk_fallback" href="https://vk.me/ogon_truba_diler" target="_blank" rel="noopener" hidden>💬 Написать в ВК</a>
 <script>
 (function(){
-  var ПРОВЕРКА_МС = 3500;                 // сколько ждём отрисовку виджета ВК
+  var ПРОВЕРКА_МС = 1200;                // как часто проверяем, появился ли виджет ВК
+  var ЖДАТЬ_МС    = 9000;                // сколько всего ждём (потом включаем запасную кнопку)
   var кнопка = document.getElementById('vk_fallback');
   function запасной(){ if (кнопка) кнопка.hidden = false; }
+  // Виджет ВК в Firefox/Safari не работает: контейнер и iframe есть, но кнопка нулевого размера,
+  // поэтому проверяем не наличие элементов, а их реальную видимость на странице.
   function отрисовался(){
     var м = document.getElementById('vk_community_messages');
-    return !!(м && (м.querySelector('iframe') || м.children.length));
+    if (!м) return false;
+    var узлы = [м].concat([].slice.call(м.querySelectorAll('iframe, div, a, img, svg')));
+    for (var i = 0; i < узлы.length; i++) {
+      var r = узлы[i].getBoundingClientRect();
+      if (r.width >= 20 && r.height >= 20) return true;
+    }
+    return false;
   }
   try {
     if (window.VK && VK.Widgets && VK.Widgets.CommunityMessages) {
@@ -606,7 +615,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         welcomeScreen: 1,     // показывать экран приветствия
         widgetPosition: 'right'
       });
-      setTimeout(function(){ if (!отрисовался()) запасной(); }, ПРОВЕРКА_МС);
+      var прошло = 0;
+      var ждём = setInterval(function(){
+        прошло += ПРОВЕРКА_МС;
+        if (отрисовался()) { clearInterval(ждём); return; }
+        if (прошло >= ЖДАТЬ_МС) { clearInterval(ждём); запасной(); }
+      }, ПРОВЕРКА_МС);
     } else {
       запасной();             // скрипт ВК не загрузился (нет сети, запрещён) — даём простую ссылку
     }
