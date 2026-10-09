@@ -46,7 +46,20 @@
   footer { border-top: 1px solid #232c37; margin-top: 36px; padding: 20px 0 40px; color: #7d8896; font-size: 14px; }
   .btn { display: inline-block; border: 1px solid #2c3642; border-radius: 10px; padding: 10px 16px;
          text-decoration: none; color: #e7edf4; font-size: 14px; }
+  /* запасная кнопка ВК: показывается только если виджет не отрисовался.
+     Правило с [hidden] обязательно — без него display перебивает атрибут hidden */
+  #vk_fallback{
+    position:fixed; right:18px; bottom:18px; z-index:9000;
+    padding:12px 18px; border-radius:999px;
+    background:#0077FF; color:#fff; font:500 15px/1 inherit;
+    text-decoration:none; box-shadow:0 6px 22px rgba(0,0,0,.28);
+  }
+  #vk_fallback[hidden]{display:none}
+  #vk_fallback:hover{background:#0066dd}
+  @media (max-width:600px){#vk_fallback{right:12px;bottom:12px;padding:11px 16px;font-size:14px}}
 </style>
+<!-- Виджет сообщений ВКонтакте: кнопка «Напишите нам» в углу страницы -->
+<script src="https://vk.ru/js/api/openapi.js?169" type="text/javascript"></script>
 </head>
 <body>
 <header>
@@ -127,5 +140,46 @@
     доставка по России
   </div>
 </footer>
+
+<!-- Виджет сообщений ВК: пишем напрямую в сообщество «Огонь Труба» (id 241341744) -->
+<div id="vk_community_messages"></div>
+<a id="vk_fallback" href="https://vk.me/ogon_truba_diler" target="_blank" rel="noopener" hidden>💬 Написать в ВК</a>
+<script>
+(function(){
+  var ПРОВЕРКА_МС = 1200;                // как часто проверяем, появился ли виджет ВК
+  var ЖДАТЬ_МС    = 9000;                // сколько всего ждём, потом включаем запасную кнопку
+  var кнопка = document.getElementById('vk_fallback');
+  function запасной(){ if (кнопка) кнопка.hidden = false; }
+  // Проверяем не наличие элементов, а их реальный размер на странице:
+  // при неудаче контейнер и iframe есть, но кнопка нулевая.
+  function отрисовался(){
+    var м = document.getElementById('vk_community_messages');
+    if (!м) return false;
+    var узлы = [м].concat([].slice.call(м.querySelectorAll('iframe, div, a, img, svg')));
+    for (var i = 0; i < узлы.length; i++) {
+      var r = узлы[i].getBoundingClientRect();
+      if (r.width >= 20 && r.height >= 20) return true;
+    }
+    return false;
+  }
+  try {
+    if (window.VK && VK.Widgets && VK.Widgets.CommunityMessages) {
+      VK.Widgets.CommunityMessages('vk_community_messages', 241341744, {
+        expanded: 0, welcomeScreen: 1, widgetPosition: 'right'
+      });
+      var прошло = 0;
+      var ждём = setInterval(function(){
+        прошло += ПРОВЕРКА_МС;
+        if (отрисовался()) { clearInterval(ждём); return; }
+        if (прошло >= ЖДАТЬ_МС) { clearInterval(ждём); запасной(); }
+      }, ПРОВЕРКА_МС);
+    } else {
+      запасной();
+    }
+  } catch (е) {
+    запасной();
+  }
+})();
+</script>
 </body>
 </html>
