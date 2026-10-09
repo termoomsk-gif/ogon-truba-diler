@@ -93,6 +93,22 @@
 <!-- /Yandex.Metrika counter -->
 
 <link rel="stylesheet" href="css/style.css">
+<!-- Виджет сообщений ВКонтакте: кнопка «Напишите нам» в углу страницы.
+     Сообщество «Огонь Труба | Официальный дилер» (id 241341744), домен разрешён в настройках сообщества. -->
+<script src="https://vk.ru/js/api/openapi.js?169" type="text/javascript"></script>
+<style>
+  /* запасная кнопка: показывается, если виджет ВК не отрисовался
+     (Open API не работает в Firefox и Safari, а также при блокировке скриптов) */
+  #vk_fallback{
+    position:fixed; right:18px; bottom:18px; z-index:9000;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 18px; border-radius:999px;
+    background:#0077FF; color:#fff; font:500 15px/1 inherit;
+    text-decoration:none; box-shadow:0 6px 22px rgba(0,0,0,.28);
+  }
+  #vk_fallback:hover{background:#0066dd}
+  @media (max-width:600px){#vk_fallback{right:12px;bottom:12px;padding:11px 16px;font-size:14px}}
+</style>
 </head>
 <body>
 
@@ -569,6 +585,35 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 });
+</script>
+
+<!-- Виджет сообщений ВК: пишем напрямую в сообщество «Огонь Труба» (id 241341744) -->
+<div id="vk_community_messages"></div>
+<a id="vk_fallback" href="https://vk.me/ogon_truba_diler" target="_blank" rel="noopener" hidden>💬 Написать в ВК</a>
+<script>
+(function(){
+  var ПРОВЕРКА_МС = 3500;                 // сколько ждём отрисовку виджета ВК
+  var кнопка = document.getElementById('vk_fallback');
+  function запасной(){ if (кнопка) кнопка.hidden = false; }
+  function отрисовался(){
+    var м = document.getElementById('vk_community_messages');
+    return !!(м && (м.querySelector('iframe') || м.children.length));
+  }
+  try {
+    if (window.VK && VK.Widgets && VK.Widgets.CommunityMessages) {
+      VK.Widgets.CommunityMessages('vk_community_messages', 241341744, {
+        expanded: 0,          // не раскрывать окно само — только кнопка в углу
+        welcomeScreen: 1,     // показывать экран приветствия
+        widgetPosition: 'right'
+      });
+      setTimeout(function(){ if (!отрисовался()) запасной(); }, ПРОВЕРКА_МС);
+    } else {
+      запасной();             // скрипт ВК не загрузился (нет сети, запрещён) — даём простую ссылку
+    }
+  } catch (е) {
+    запасной();
+  }
+})();
 </script>
 </body>
 </html>
