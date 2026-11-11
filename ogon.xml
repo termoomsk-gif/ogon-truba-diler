@@ -23979,6 +23979,8 @@ Eco Jet 40 — 54 700 ₽ · Eco Jet+ 50 — 64 700 ₽ · Jet 100 — 74 700 �
     <Country>Россия</Country>
     <NDS>Без НДС</NDS>
     <Setup>Напольная</Setup>
+    <BoilerType>Газовый</BoilerType>
+    <ThermalPower>500</ThermalPower>
     <Images>
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-unique/ogon0147/01.jpg" />
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-parogeneratory/ogon0147/02.jpg" />
@@ -28740,6 +28742,8 @@ Eco Jet 40 — 54 700 ₽ · Eco Jet+ 50 — 64 700 ₽ · Jet 100 — 74 700 �
     <Country>Россия</Country>
     <NDS>Без НДС</NDS>
     <Setup>Напольная</Setup>
+    <BoilerType>Жидкотопливный</BoilerType>
+    <ThermalPower>700</ThermalPower>
     <Images>
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-unique/ogon0254/01.jpg" />
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-parogeneratory/ogon0254/02.jpg" />
@@ -34393,6 +34397,7 @@ Eco Jet 40 — 54 700 ₽ · Eco Jet+ 50 — 64 700 ₽ · Jet 100 — 74 700 �
     <NDS>Без НДС</NDS>
     <ThermalPower>200</ThermalPower>
     <Setup>Напольная</Setup>
+    <BoilerType>Газовый</BoilerType>
     <Images>
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-unique/ogon0357/01.jpg" />
       <Image url="https://claude.termoomsk.ru/avito-feed/photos/ogon-parogeneratory/ogon0357/02.jpg" />
